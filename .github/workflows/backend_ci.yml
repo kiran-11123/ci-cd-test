@@ -12,21 +12,25 @@ jobs:
 
     defaults:
       run:
-        working-directory: backend   
+        working-directory: backend
 
     steps:
+      # Step 1: Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: npm
+          cache: 'npm'
           cache-dependency-path: backend/package-lock.json
 
+      # Step 3: Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
+      # Step 4: Run tests
       - name: Run tests
         run: npm test
