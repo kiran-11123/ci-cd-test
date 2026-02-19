@@ -29,3 +29,38 @@ describe("POST/ sum" , ()=>{
         expect(res.body.result).toBe(3);
     })
 })
+
+describe("/ POST multiply" , ()=>{
+       
+    it("Should return the product of two numbers" , async()=>{
+
+        const res = (await request(app).post("/multiply").send({
+              a:2,
+              b:3
+        }))
+         
+        expect(res.statusCode).toBe(200);
+        expect(res.body.result).toBe(6);
+        
+    
+    
+    })
+})
+
+
+describe("/ POST multiply" , ()=>{
+       
+    it("Should return the product of two large numbers" , async()=>{
+
+        const res = (await request(app).post("/multiply").send({
+              a:100000000000000000,
+              b:100000000000000000
+        }))
+         
+        expect(res.statusCode).toBe(400);
+        expect(res.body.message).toBe("Input too large");
+    
+    
+    
+    })
+})
