@@ -5,7 +5,7 @@
   "scripts": {
     "test": "npx vitest run",
     "dev": "node index.js",
-    
+    "start": "node index.js",
     "coverage": "npx vitest run --coverage"
   },
   "keywords": [],
